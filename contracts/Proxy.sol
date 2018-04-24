@@ -7,7 +7,7 @@ contract Proxy is StorageState , Ownable {
    
   function Proxy(KeyValueStorage storage_ , address _owner) public {
     _storage = storage_;
-    _storage.setAddress("owner",_owner)
+    _storage.setAddress("owner",_owner);
     
   }
 
