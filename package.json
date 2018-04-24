@@ -1,0 +1,48 @@
+{
+  "name": "smart-contract-upgradability",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "files": [
+    "build",
+    "lib",
+    "src"
+  ],
+  "dependencies": {
+    "moment": "^2.18.1",
+    "truffle-blockchain-utils": "^0.0.3",
+    "truffle-hdwallet-provider": "^0.0.3",
+    "zeppelin-solidity": "1.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "cross-env": "^5.0.4",
+    "lk-test-helpers": "^0.1.3",
+    "lodash": "^4.17.5",
+    "snazzy": "^7.0.0",
+    "solidity-coverage": "sc-forks/solidity-coverage#6a13575e3597e491299a9dd1474c64c9066faa69",
+    "standard": "^10.0.3",
+    "truffle": "^4.1.5",
+    "truffle-contract": "3.0.1",
+    "truffle-ext": "0.1.8"
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "cleanup": "rm -rf build/ && mkdir build && rm -rf lib/ && mkdir lib",
+    "compile": "npm run cleanup && truffle compile --all && npm run build",
+    "deploy": "npm run cleanup && truffle migrate --reset && npm run build",
+    "deploy-rinkeby": "npm run cleanup && truffle migrate --reset --network rinkeby && npm run build",
+    "test": "npm run build && scripts/test.sh",
+    "test:truffle": "truffle test",
+    "test:coverage": "npm run build && npm run solidity-coverage",
+    "testrpc": "scripts/runTestrpc.sh",
+    "lint": "standard --verbose | snazzy"
+  }
+}
